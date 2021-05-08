@@ -1,21 +1,21 @@
-﻿using System.Xml.Serialization;
+﻿using Newtonsoft.Json;
+using System.Xml.Serialization;
 
 namespace CountryAPI.Models
 {
 	/// <summary>
 	/// Region Model
 	/// </summary>
-    [XmlRoot(ElementName = "region")]
+	[JsonObject("region")]
 	public class Region
 	{
-
-		[XmlAttribute(AttributeName = "id")]
+		[JsonProperty("id")]
 		public string Id { get; set; }
 
-		[XmlAttribute(AttributeName = "iso2code")]
+		[JsonProperty("iso2code")]
 		public string Iso2code { get; set; }
 
-		[XmlText]
-		public string Text { get; set; }
+		[JsonProperty("value")]
+		public string Value { get; set; }
 	}
 }

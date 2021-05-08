@@ -1,33 +1,27 @@
-﻿using System.Xml.Serialization;
+﻿using Newtonsoft.Json;
+using RestSharp;
+using System;
+using System.Collections.Generic;
+using System.Xml.Serialization;
 
 namespace CountryAPI.Models.ResponseModel
 {
     /// <summary>
     /// Model for Countries returned by API
     /// </summary>
-    [XmlRoot(ElementName = "countries")]
-	public class Countries
+    public class Countries
 	{
+		public List<Country> Country { get; set; }
 
-		[XmlElement(ElementName = "country")]
-		public Country Country { get; set; }
+        [JsonProperty("page")]
+        public int Page { get; set; }
+        [JsonProperty("pages")]
+        public int Pages { get; set; }
 
-		[XmlAttribute(AttributeName = "wb")]
-		public string Wb { get; set; }
+        [JsonProperty("per_page")]
+        public string PerPage { get; set; }
 
-		[XmlAttribute(AttributeName = "page")]
-		public int Page { get; set; }
-
-		[XmlAttribute(AttributeName = "pages")]
-		public int Pages { get; set; }
-
-		[XmlAttribute(AttributeName = "per_page")]
-		public int PerPage { get; set; }
-
-		[XmlAttribute(AttributeName = "total")]
-		public int Total { get; set; }
-
-		[XmlText]
-		public string Text { get; set; }
+        [JsonProperty("total")]
+        public int Total { get; set; }
 	}
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,17 +11,16 @@ namespace CountryAPI.Models.ResponseModel
 	/// <summary>
 	/// Lending Type Model
 	/// </summary>
-	[XmlRoot(ElementName = "lendingType")]
+	[JsonObject("lendingType")]
 	public class LendingType
 	{
-
-		[XmlAttribute(AttributeName = "id")]
+		[JsonProperty("id")]
 		public string Id { get; set; }
 
-		[XmlAttribute(AttributeName = "iso2code")]
+		[JsonProperty("iso2code")]
 		public string Iso2code { get; set; }
 
-		[XmlText]
-		public string Text { get; set; }
+		[JsonProperty("value")]
+		public string Value { get; set; }
 	}
 }

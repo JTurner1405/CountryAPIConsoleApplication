@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CountryAPIConsoleApplication\CountryAPI.ConsoleApplication.csproj" />
+    <ProjectReference Include="..\CountryAPI\CountryAPI.API.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,21 +1,21 @@
-﻿using System.Xml.Serialization;
+﻿using Newtonsoft.Json;
+using System.Xml.Serialization;
 
 namespace CountryAPI.Models.ResponseModel
 {
 	/// <summary>
 	/// Income Level Model
 	/// </summary>
-    [XmlRoot(ElementName = "incomeLevel")]
+	[JsonObject("incomeLevel")]
 	public class IncomeLevel
 	{
-
-		[XmlAttribute(AttributeName = "id")]
+		[JsonProperty("id")]
 		public string Id { get; set; }
 
-		[XmlAttribute(AttributeName = "iso2code")]
+		[JsonProperty("iso2code")]
 		public string Iso2code { get; set; }
 
-		[XmlText]
-		public string Text { get; set; }
+		[JsonProperty("value")]
+		public string Value { get; set; }
 	}
 }
