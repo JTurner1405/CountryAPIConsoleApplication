@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 
 namespace CountryAPI.Models.ResponseModel
@@ -9,13 +10,13 @@ namespace CountryAPI.Models.ResponseModel
 	[JsonObject("adminregion")]
 	public class AdminRegion
 	{
-		[JsonProperty("id")]
+		[JsonPropertyName("id")]
 		public string Id { get; set; }
 
-		[JsonProperty("iso2code")]
+		[JsonPropertyName("iso2code")]
 		public string Iso2code { get; set; }
 
-		[JsonProperty("value")]
+		[JsonPropertyName("value")]
 		public string Value { get; set; }
 	}
 }

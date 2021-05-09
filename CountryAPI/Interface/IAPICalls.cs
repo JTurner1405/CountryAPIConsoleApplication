@@ -1,9 +1,4 @@
 ﻿using CountryAPI.Models.ResponseModel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CountryAPI.API.Interface
 {
@@ -17,6 +12,13 @@ namespace CountryAPI.API.Interface
         /// </summary>
         /// <param name="value">ISO value to request data on</param>
         /// <returns>Country data returned</returns>
-        Countries RequestCountry(string value);
+        APIRoot RequestCountry(string value);
+
+        /// <summary>
+        /// Convert API String content to Objects
+        /// </summary>
+        /// <param name="value">API Content to convert</param>
+        /// <returns>API Root object</returns>
+        APIRoot ConvertStringToObject(string value);
     }
 }

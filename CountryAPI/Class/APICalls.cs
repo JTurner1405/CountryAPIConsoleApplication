@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 
 namespace CountryAPI.API.Class
@@ -32,7 +33,7 @@ namespace CountryAPI.API.Class
         /// </summary>
         /// <param name="value">ISO value to request data on</param>
         /// <returns>Country data returned</returns>
-        public Countries RequestCountry(string value)
+        public APIRoot RequestCountry(string value)
         {
             RestRequest request;
             if(string.IsNullOrEmpty(value))
@@ -45,17 +46,49 @@ namespace CountryAPI.API.Class
             }
             request.AddParameter("format", "json");
 
-            var response = client.Execute(request);
-            Trace.WriteLine(response.Content);
             try
             {
-                var result1 = JsonConvert.DeserializeObject<List<Countries>>(response.Content);
+                var response = client.Execute(request);
+
+#if DEBUG
+                Trace.WriteLine(response.Content);
+#endif
+
+                return this.ConvertStringToObject(response.Content);
+
             }
             catch (Exception ex)
             {
                 Trace.WriteLine(ex.Message);
             }
 
+            return null;
+        }
+
+        /// <summary>
+        /// Convert API String content to Objects
+        /// </summary>
+        /// <param name="value">API Content to convert</param>
+        /// <returns>API Root object</returns>
+        public APIRoot ConvertStringToObject(string value)
+        {
+            if(string.IsNullOrEmpty(value))
+            {
+                return null;
+            }
+
+            try
+            {
+                var result1 = JsonConvert.DeserializeObject<List<Object>>(value);
+                var pages = JsonConvert.DeserializeObject<PageCount>(result1[0].ToString());
+                var listOfCountry = JsonConvert.DeserializeObject<List<Country>>(result1[1].ToString());
+                
+                return new APIRoot(pages, listOfCountry);
+            }
+            catch(Exception ex)
+            {
+                Trace.WriteLine(ex.Message);
+            }
             return null;
         }
     }
