@@ -59,15 +59,14 @@ namespace ContryAPI.UnitTests.ConsoleApplication
         [Test]
         public void ValidStringEmptyStringTest()
         {
-            var result = validation.ValidString(string.Empty);
-            Assert.IsFalse(result.Item1);
-            Assert.AreEqual("No value passed, String must contain either 2 or 3 charcters", result.Item2);
+            var result = validation.IsValidString(string.Empty);
+            Assert.IsTrue(result.Item1);
         }
 
         [Test]
         public void ValidStringTest()
         {
-            var result = validation.ValidString("abc");
+            var result = validation.IsValidString("abc");
             Assert.IsTrue(result.Item1);
             Assert.IsEmpty(result.Item2);
         }
@@ -75,7 +74,7 @@ namespace ContryAPI.UnitTests.ConsoleApplication
         [Test]
         public void ValidStringToShortTest()
         {
-            var result = validation.ValidString("a");
+            var result = validation.IsValidString("a");
             Assert.IsFalse(result.Item1);
             Assert.AreEqual("Only 1 character read, String must contain either 2 or 3 charcters", result.Item2);
         }
@@ -83,7 +82,7 @@ namespace ContryAPI.UnitTests.ConsoleApplication
         [Test]
         public void ValidStringToLongTest()
         {
-            var result = validation.ValidString("asdfasdf");
+            var result = validation.IsValidString("asdfasdf");
 
             Assert.IsFalse(result.Item1);
             Assert.AreEqual("String contains to many characters, Maximum of 3 characters allowed", result.Item2);

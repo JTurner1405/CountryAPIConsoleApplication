@@ -18,11 +18,12 @@ namespace CountryAPIConsoleApplication.Class
         /// </summary>
         /// <param name="value">String to check </param>
         /// <returns>If valid & Any reason for failures</returns>
-        public Tuple<bool, string> ValidString(string value)
+        public Tuple<bool, string> IsValidString(string value)
         {
+            //Allow this value to be blank to call All countries
             if(string.IsNullOrEmpty(value))
             {
-                return new Tuple<bool, string>(false, "No value passed, String must contain either 2 or 3 charcters");
+                return new Tuple<bool, string>(true, "");
             }
 
             if(value.Length > 3)

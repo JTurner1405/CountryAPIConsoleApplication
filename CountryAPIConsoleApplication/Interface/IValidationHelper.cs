@@ -16,7 +16,7 @@ namespace CountryAPI.ConsoleApplication.Interface
         /// </summary>
         /// <param name="value">String to check </param>
         /// <returns>If valid & Any reason for failures</returns>
-        Tuple<bool, string> ValidString(string value);
+        Tuple<bool, string> IsValidString(string value);
 
         /// <summary>
         /// Check validation against Regex for character types

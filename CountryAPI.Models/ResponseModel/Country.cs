@@ -49,5 +49,10 @@ namespace CountryAPI.Models.ResponseModel
         [JsonPropertyName("latitude")]
         public string Latitude { get; set; }
 
+        public override string ToString()
+        {
+            return "Country Name: " + this.Name + "\nRegion: " + this.Region.Value + "\nCapital City: " + this.CapitalCity + "\nLongitude: " + this.Longitude + "\nLatitude: " + this.Latitude;
+        }
+
     }
 }
